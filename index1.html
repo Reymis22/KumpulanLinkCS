@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pintu Masuk</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('https://i.imgur.com/t2G6CGs.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .logo-container img {
+            width: 80px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .dropdown-container, .search-container {
+            margin: 20px 0;
+        }
+
+        select, input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .container {
+            display: none;
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .container.active {
+            display: block;
+        }
+
+        .link-box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            text-align: center;
+        }
+
+        .link-box:hover {
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 20px;
+        }
+
+        .footer a {
+            display: inline-block;
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer a:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <a href="#">
+            <img src="https://i.imgur.com/GwNTNAQ.jpeg" alt="Logo CsCreep">
+        </a>
+    </div>
+
+    <div class="header">
+        <h1>PILIH KEJADIAN</h1>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Cari kejadian..." onkeyup="searchEvent()">
+    </div>
+
+    <div class="dropdown-container">
+        <select id="eventSelector" onchange="showEvent()">
+            <option value="0">Rel Kereta Probolinggo</option>
+            <option value="1">Kecelakaan di Bandung</option>
+            <option value="2">Gempa di Yogyakarta</option> <!-- Tab baru -->
+        </select>
+    </div>
+
+    <div class="main-container">
+        <div class="container active" data-title="Rel Kereta Probolinggo">
+            <h2>KEJADIAN REL KERETA PROBOLINGGO</h2>
+            <div class="link-box"><a href="#">FOTO 1</a></div>
+            <div class="link-box"><a href="#">FOTO 2</a></div>
+            <div class="link-box"><a href="#">VIDEO 1</a></div>
+        </div>
+
+        <div class="container" data-title="Kecelakaan di Bandung">
+            <h2>KECELAKAAN DI BANDUNG</h2>
+            <div class="link-box"><a href="#">FOTO 1</a></div>
+            <div class="link-box"><a href="#">FOTO 2</a></div>
+            <div class="link-box"><a href="#">VIDEO 1</a></div>
+        </div>
+
+        <div class="container" data-title="Gempa di Yogyakarta">
+            <h2>GEMPA DI YOGYAKARTA</h2>
+            <div class="link-box"><a href="#">FOTO 1</a></div>
+            <div class="link-box"><a href="#">FOTO 2</a></div>
+            <div class="link-box"><a href="#">VIDEO 1</a></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="https://www.instagram.com/cscreep_story/" target="_blank">Instagram</a>
+        <a href="https://saweria.co/Cscreep" target="_blank">Donasi via Saweria</a>
+    </div>
+
+    <script>
+        function showEvent() {
+            var index = document.getElementById("eventSelector").selectedIndex;
+            var containers = document.querySelectorAll(".container");
+            
+            containers.forEach((container, i) => {
+                container.classList.toggle("active", i === index);
+            });
+        }
+
+        function searchEvent() {
+            var input = document.getElementById("searchBar").value.toLowerCase();
+            var containers = document.querySelectorAll(".container");
+            var found = false;
+
+            containers.forEach(container => {
+                var title = container.getAttribute("data-title").toLowerCase();
+                if (title.includes(input)) {
+                    containers.forEach(c => c.classList.remove("active")); // Sembunyikan semua
+                    container.classList.add("active"); // Tampilkan yang cocok
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert("Kejadian tidak ditemukan.");
+            }
+        }
+    </script>
+</body>
+</html>
