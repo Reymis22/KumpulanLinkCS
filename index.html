@@ -125,8 +125,7 @@
     <div class="dropdown-container">
         <select id="eventSelector" onchange="showEvent()">
             <option value="0">Rel Kereta Probolinggo</option>
-            <option value="1">Kecelakaan di Bandung</option>
-            <option value="2">Gempa di Yogyakarta</option> <!-- Tab baru -->
+            <option value="1">Wanita Dimakan Buaya di Maluku</option>
         </select>
     </div>
 
@@ -143,18 +142,11 @@
             <div class="link-box"><a href="https://qu.ax/sPmrl.mp4" target="_blank">VIDEO 5</a></div>
         </div>
 
-        <div class="container" data-title="Kecelakaan di Bandung">
-            <h2>KECELAKAAN DI BANDUNG</h2>
-            <div class="link-box"><a href="#">FOTO 1</a></div>
-            <div class="link-box"><a href="#">FOTO 2</a></div>
-            <div class="link-box"><a href="#">VIDEO 1</a></div>
-        </div>
-
-        <div class="container" data-title="Gempa di Yogyakarta">
-            <h2>GEMPA DI YOGYAKARTA</h2>
-            <div class="link-box"><a href="#">FOTO 1</a></div>
-            <div class="link-box"><a href="#">FOTO 2</a></div>
-            <div class="link-box"><a href="#">VIDEO 1</a></div>
+        <div class="container" data-title="Wanita Dimakan Buaya di Maluku">
+            <h2>WANITA DIMAKAN BUAYA DI MALUKU</h2>
+            <div class="link-box"><a href="https://qu.ax/fOdra.mp4" target="_blank">VIDEO 1</a></div>
+            <div class="link-box"><a href="https://qu.ax/JodJq.mp4" target="_blank">VIDEO 2</a></div>
+            <div class="link-box"><a href="https://qu.ax/zkgac.mp4" target="_blank">VIDEO 3</a></div>
         </div>
     </div>
 
@@ -181,8 +173,8 @@
             containers.forEach(container => {
                 var title = container.getAttribute("data-title").toLowerCase();
                 if (title.includes(input)) {
-                    containers.forEach(c => c.classList.remove("active")); // Sembunyikan semua
-                    container.classList.add("active"); // Tampilkan yang cocok
+                    containers.forEach(c => c.classList.remove("active"));
+                    container.classList.add("active");
                     found = true;
                 }
             });
