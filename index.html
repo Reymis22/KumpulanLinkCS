@@ -136,9 +136,61 @@
             <div class="link-box"><a href="https://qu.ax/PRyZu.webp" target="_blank">FOTO 1</a></div>
             <div class="link-box"><a href="https://qu.ax/MFhHG.webp" target="_blank">FOTO 2</a></div>
             <div class="link-box"><a href="https://qu.ax/vFUmD.webp" target="_blank">FOTO 3</a></div>
-            <div class="link-box"><a href="https://videy.co/v/?id=luJ670RY1" target="_blank">VIDEO 1</a></div>
-            <div class="link-box"><a href="https://videy.co/v/?id=errHXVKj1" target="_blank">VIDEO 2</a></div>
-            <div class="link-box"><a href="https://videy.co/v/?id=RP1SEpBX1" target="_blank">VIDEO 3</a></div>
+            <div class="link-box"><a href="https://qu.ax/LcjWo.mp4" target="_blank">VIDEO 1</a></div>
+            <div class="link-box"><a href="https://qu.ax/mQrSe.mp4" target="_blank">VIDEO 2</a></div>
+            <div class="link-box"><a href="https://qu.ax/QyRDU.mp4" target="_blank">VIDEO 3</a></div>
             <div class="link-box"><a href="https://qu.ax/idJqM.mp4" target="_blank">VIDEO 4</a></div>
             <div class="link-box"><a href="https://qu.ax/sPmrl.mp4" target="_blank">VIDEO 5</a></div>
+        </div>
+
+        <div class="container" data-title="Kecelakaan di Bandung">
+            <h2>KECELAKAAN DI BANDUNG</h2>
+            <div class="link-box"><a href="#">FOTO 1</a></div>
+            <div class="link-box"><a href="#">FOTO 2</a></div>
+            <div class="link-box"><a href="#">VIDEO 1</a></div>
+        </div>
+
+        <div class="container" data-title="Gempa di Yogyakarta">
+            <h2>GEMPA DI YOGYAKARTA</h2>
+            <div class="link-box"><a href="#">FOTO 1</a></div>
+            <div class="link-box"><a href="#">FOTO 2</a></div>
+            <div class="link-box"><a href="#">VIDEO 1</a></div>
+        </div>
     </div>
+
+    <div class="footer">
+        <a href="https://www.instagram.com/cscreep_story/" target="_blank">Instagram</a>
+        <a href="https://saweria.co/Cscreep" target="_blank">Donasi via Saweria</a>
+    </div>
+
+    <script>
+        function showEvent() {
+            var index = document.getElementById("eventSelector").selectedIndex;
+            var containers = document.querySelectorAll(".container");
+            
+            containers.forEach((container, i) => {
+                container.classList.toggle("active", i === index);
+            });
+        }
+
+        function searchEvent() {
+            var input = document.getElementById("searchBar").value.toLowerCase();
+            var containers = document.querySelectorAll(".container");
+            var found = false;
+
+            containers.forEach(container => {
+                var title = container.getAttribute("data-title").toLowerCase();
+                if (title.includes(input)) {
+                    containers.forEach(c => c.classList.remove("active")); // Sembunyikan semua
+                    container.classList.add("active"); // Tampilkan yang cocok
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert("Kejadian tidak ditemukan.");
+            }
+        }
+    </script>
+</body>
+</html>
